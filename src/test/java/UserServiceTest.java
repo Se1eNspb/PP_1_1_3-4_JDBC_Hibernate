@@ -8,12 +8,9 @@ import java.util.List;
 
 public class UserServiceTest {
     private final UserService userService = new UserServiceImpl();
-
     private final String testName = "Ivan";
     private final String testLastName = "Ivanov";
     private final byte testAge = 5;
-
-
     @Test
     public void dropUsersTable() {
         try {
@@ -23,7 +20,6 @@ public class UserServiceTest {
             Assert.fail("При тестировании удаления таблицы произошло исключение\n" + e);
         }
     }
-
     @Test
     public void createUsersTable() {
         try {
@@ -33,16 +29,13 @@ public class UserServiceTest {
             Assert.fail("При тестировании создания таблицы пользователей произошло исключение\n" + e.getMessage());
         }
     }
-
     @Test
     public void saveUser() {
         try {
             userService.dropUsersTable();
             userService.createUsersTable();
             userService.saveUser(testName, testLastName, testAge);
-
             User user = userService.getAllUsers().get(0);
-
             if (!testName.equals(user.getName())
                     || !testLastName.equals(user.getLastName())
                     || testAge != user.getAge()
@@ -54,7 +47,6 @@ public class UserServiceTest {
             Assert.fail("Во время тестирования сохранения пользователя произошло исключение\n" + e);
         }
     }
-
     @Test
     public void removeUserById() {
         try {
@@ -66,7 +58,6 @@ public class UserServiceTest {
             Assert.fail("При тестировании удаления пользователя по id произошло исключение\n" + e);
         }
     }
-
     @Test
     public void getAllUsers() {
         try {
@@ -74,7 +65,6 @@ public class UserServiceTest {
             userService.createUsersTable();
             userService.saveUser(testName, testLastName, testAge);
             List<User> userList = userService.getAllUsers();
-
             if (userList.size() != 1) {
                 Assert.fail("Проверьте корректность работы метода сохранения пользователя/удаления или создания таблицы");
             }
@@ -82,7 +72,6 @@ public class UserServiceTest {
             Assert.fail("При попытке достать всех пользователей из базы данных произошло исключение\n" + e);
         }
     }
-
     @Test
     public void cleanUsersTable() {
         try {
@@ -98,5 +87,4 @@ public class UserServiceTest {
             Assert.fail("При тестировании очистки таблицы пользователей произошло исключение\n" + e);
         }
     }
-
 }

@@ -1,13 +1,7 @@
 package jm.task.core.jdbc;
 
-import com.sun.xml.bind.v2.runtime.output.SAXOutput;
-import jm.task.core.jdbc.dao.UserDao;
-import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
-import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
-
-import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
